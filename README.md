@@ -1,5 +1,5 @@
 # Conceptos-Varios-de-C
-Rejunte de varios conceptos de C.
+Rejunte de varios conceptos de C. La guia no es muy extensa, y esta abierta a cualquier crítica, revisión o sugeréncia.
 
 ## Prerequisitos.
 Para poder compilar los ejemplos, se necesita de dos cosas:
