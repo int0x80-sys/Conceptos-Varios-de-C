@@ -1,7 +1,7 @@
 # Conceptos-Varios-de-C
-Rejunte de varios conceptos de C. La guia no es muy extensa, y esta abierta a cualquier crítica, revisión o sugeréncia.
+Rejunte de varios conceptos de C. La guia no es muy extensa, y esta abierta a cualquier crítica, revisión o sugerencia.
 
-## Prerequisitos.
+## Prerrequisitos.
 Para poder compilar los ejemplos, se necesita de dos cosas:
   * Cualquier editor de texto.
   * El compilador gcc (que viene por defecto en linux).
@@ -68,11 +68,11 @@ int main(void)
   return 0;
 }
 ```
-El programa lee dos numeros que ingresa el usuario por consola y muestra el resultado por consola. Una vez que tenemos escrito los archivos, ejecutamos: `gcc -c functions.c main.c` y luego `gcc -o main functions.o main.o`. Para ejecutar el programa, simplemente hacemos `./main`
+El programa lee dos numeros que ingresa el usuario por consola y muestra el resultado por consola. Una vez que tenemos escrito y guardado el archivo, ejecutamos: `gcc -c functions.c main.c` y luego `gcc -o main functions.o main.o`. Para ejecutar el programa, simplemente hacemos `./main`
 
 #### ¿Como funciona?
 
-En **functions.c** tenemos _definidas_ un par de funciones que realizan operaciones básicas, mientras que en el archivo **main.c** esta el programa principal donde usamos estas funciones. Antes de la función `main` tenemos las _declaraciones_ de las funciones que se encuentran en el archivo **functions.c**. Esto le dice al compilador que las _definiciones_ de esas funciones existen en algun otro archivo _.c_. Mas adelante vamos a ver en mas profundidad el tema de las _declaraciones_ y las _definiciones_. Como dijimos al principio, el proceso de compilación esta separado en dos etapas: la **fase de compilación** y la **fase de linkeo**.
+En **functions.c** tenemos _definidas_ un par de funciones que realizan operaciones básicas, mientras que en el archivo **main.c** está el programa principal donde usamos estas funciones. Antes de la función `main` tenemos las _declaraciones_ de las funciones que se encuentran en el archivo **functions.c**. Esto le dice al compilador que las _definiciones_ de esas funciones existen en algun otro archivo _.c_. Más adelante veremos en mayor profundidad el tema de las _declaraciones_ y las _definiciones_. Como dijimos al principio, el proceso de compilación está separado en dos etapas: la **fase de compilación** y la **fase de linkeo**.
 
 En la **fase de compilación** entra en juego el compilador de C, que analiza cada uno de los archivos _.c_ que nosotros le especifiquemos, genera código assembler y, luego, código máquina. Los archivos generados por la fase de compilación se los conoce como _archivos objetos_. Estos tienen extension _.o_, y son el resultado de la traducción que hace el compilador. Cada uno de estos archivos _.o_ contiene instrucciones máquina que el procesador puede interpretar. Estos archivos los generamos con el primer comando `gcc -c functions.c main.c`.
 
@@ -82,7 +82,7 @@ __*nota*__: _podríamos haber generado el ejecutable simpelmente haciendo `gcc -
 
 ## El preprocesador
 
-Existe una fase previa a las anteriores mensionadas. La **fase de preprocesador**. En esta fase, el preprocesador de C se encarga de analizar las directivas de preprocesador como son los `#include`, `#defines`, `#ifdef`, etc. Una lista de las directivas de C se puede encontrar [en esta página](https://en.wikibooks.org/wiki/C_Programming/Preprocessor_directives_and_macros). El siguiente ejemplo muestra como funcionan las directivas `#include` y `#define`:
+Existe una fase previa a las anteriores mencionadas, la **fase de preprocesador**. En esta fase, el preprocesador de C se encarga de analizar las directivas de preprocesador como son los `#include`, `#defines`, `#ifdef`, etc. Una lista de las directivas de C se puede encontrar [en esta página](https://en.wikibooks.org/wiki/C_Programming/Preprocessor_directives_and_macros). El siguiente ejemplo muestra cómo funcionan las directivas `#include` y `#define`:
 
 `op.c`
 ``` C
@@ -113,7 +113,7 @@ int main(void)
 }
 ```
 
-La directiva `#include` sirve para, literalmente, copiar el contenido de otro archivo al archivo actual. Para poder ver esto, vamos a ejectuar `gcc -E main.c -o main_p.c`. Este comando nos va a generar un archivo **main_p.c** que va a ser el resultado de la ejecucion del preprocesador en el archivo **main.c**.
+La directiva `#include` sirve para, literalmente, copiar el contenido de otro archivo al archivo actual. Para poder ver esto, vamos a ejectuar `gcc -E main.c -o main_p.c`. Este comando nos va a generar un archivo **main_p.c** que va a ser el resultado de la ejecución del preprocesador en el archivo **main.c**.
 
 `main_p.c`
 ``` C
@@ -151,7 +151,7 @@ int main(void)
 
 Si bien hay un par de directivas extrañas, vemos que el contenido que habia en **op.c** se encuentra ahora en **main_p.c**.
 
-Ahora vamos a imprimir los resultados de las operaciones en pantalla. Tambien vamos a usar la directiva `#define` para setear una constante, que va a ser un literal cadena y tambien lo vamos a imprimir por pantalla:
+Ahora vamos a imprimir los resultados de las operaciones en pantalla. También vamos a usar la directiva `#define` para setear una constante, que va a ser un literal cadena y también lo vamos a imprimir por pantalla:
 
 `main.c`
 ``` C
@@ -230,7 +230,7 @@ int main(void)
 }
 ```
 
-Si vemos dentro de la función `main`, en la primera llamada a `printf` vemos que `NAME` fue reemplazado por `"Matias"`. Todo este proceso, como podemos ver, pasa antes de que el compilador de C entre en acción. Mas adelante, se muestran algunos usos mas avanzados de las directivas del preprocesador.
+Si vemos dentro de la función `main`, en la primera llamada a `printf` vemos que `NAME` fue reemplazado por `"Matias"`. Todo este proceso, como podemos ver, pasa antes de que el compilador de C entre en acción. Más adelante, se muestran algunos usos más avanzados de las directivas del preprocesador.
 
 ## Declaraciones vs Definiciones
 
@@ -285,7 +285,7 @@ int main(void)
 }
 ```
 
-En este ejemplo, vimos que dentro del archivo **main.c** teniamos las siguientes lineas de codigo:
+En este ejemplo, vimos que dentro del archivo **main.c** teníamos las siguientes lineas de código:
 
 ``` C
 #include <stdio.h>
@@ -301,7 +301,7 @@ int main(void)
 .
 .
 ```
-Cuando escribimos una función sin definir el cuerpo de la misma, estamos haciendo una _declaración_. Las declaraciones de funciones le informan al compilador que "_en algun lado_" existen las definiciones de estas funciones, y nos permite utilizarlas dentro de nuestro archivo. Todo lo que sabemos es que existen estas funciones, sabemos que argumentos reciben y que es lo que devuelven. Es el linker el que, en la **fase de linkeo**, deberá encontrar las _definiciones_ de estas funciones.
+Cuando escribimos una función sin definir el cuerpo de la misma, estamos haciendo una _declaración_. Las declaraciones de funciones le informan al compilador que "_en algún lado_" existen las definiciones de estas funciones, y nos permite utilizarlas dentro de nuestro archivo. Todo lo que sabemos es que existen estas funciones, sabemos que argumentos reciben y que es lo que devuelven. Es el linker el que, en la **fase de linkeo**, deberá encontrar las _definiciones_ de estas funciones.
 
 Cuando nos referimos a la _definición_ de una función, estamos hablando de la implementación de la misma. En el ejemplo anterior, las _definiciones_ de las funciones `sum`, `sub`, `mult` y `div` se encuentran dentro del archivo **functions.c**:
 
@@ -365,7 +365,7 @@ const char* vector_to_string(struct vector3_t vec)
   return strdup(vector_to_string_buffer);
 }
 ```
- En el archivo **main.c** vamos a operar dos vectores e imprimir sus resultados. Esto ultimo se le agrega a lo que anteriormente ya hacia nuestro programa principal, que era imprimir la suma, resta, multiplicación y división de dos numeros que el usuario ingresa por teclado. podríamos hacer que el usuario ingresara los valores de ambos vectores, pero por tema de simplicidad seteamos estos vectores a valores fijos.
+ En el archivo **main.c** vamos a operar dos vectores e imprimir sus resultados. Esto último se le agrega a lo que anteriormente ya hacia nuestro programa principal, que era imprimir la suma, resta, multiplicación y división de dos numeros que el usuario ingresa por teclado. Podríamos hacer que el usuario ingresara los valores de ambos vectores, pero por tema de simplicidad seteamos estos vectores a valores fijos.
  
  `main.c`
  ``` C
@@ -443,12 +443,12 @@ o, si queremos saltarnos el paso de generar los archivos objetos:
 
 Finalmente podemos ejecutar el programa haciendo `./main`
 
-#### ¿Como funciona?
+#### ¿Cóo funciona?
 Como el archivo **vector.c** hace uso de las funciones que se encuentran en **functions.c**, tenemos que escribir las _declaraciones_ de las funciones que queremos utilizar.
 
 En el archivo **main.c** hacemos uso de las funciones definidas en **functions.c** y **vector.c**, por lo que debemos crear las _declaraciones_ para todas ellas. Empezamos a notar que el código empieza a quedar desprolijo, tieniendo que declarar cada una de las funciones a las que queremos acceder desde otro archivo de C. No solo eso. Si, por ejemplo, decidieramos cambiar la firma de las funciones que se encuentran en **functions.c** (por ejemplo, que en vez de que operen sobre `int`s ahora operaran con `float`s) deberíamos cambiar cada una de las _declaraciones_ para que estas vean reflejado los cambios. Es acá cuando entran en juego los _header files_.
 
-Los _header files_ son archivos con, generalmente, extensiones _.h_, y que contienen _declaraciones_ de funciones y otros tipos de _declaraciones_, como `struct`s, `typedef`s, directivas `#defines` y otros `#includes`, entre otras cosas. Pero, principalmente, encontraremos _declaraciones_ de funciones. Luego, en cada archivo _.c_, incluimos los _header files_ que contienen las _declaraciones_ de las funciones que necesitamos con la directiva `#include`. De esta manera, si la firma de una funcion cambia, solo deberiamos modificar el _header file_ y el cambio se veria reflejado en todos los archivos de C que lo incluyan. Ademas, es una buena forma de exponer la interfaz de un archivo de _.c_.
+Los _header files_ son archivos con, generalmente, extensiones _.h_, y que contienen _declaraciones_ de funciones y otros tipos de _declaraciones_, como `struct`s, `typedef`s, directivas `#defines` y otros `#includes`, entre otras cosas. Pero, principalmente, encontraremos _declaraciones_ de funciones. Luego, en cada archivo _.c_, incluimos los _header files_ que contienen las _declaraciones_ de las funciones que necesitamos con la directiva `#include`. De esta manera, si la firma de una función cambia, solo deberiamos modificar el _header file_ y el cambio se vería reflejado en todos los archivos de C que lo incluyan. Además, es una buena forma de exponer la interfaz de un archivo de _.c_.
 
 En nuestro ejemplo, quisiéramos exponer las funciones que se encuentran en **functions.c** y en **vector.c**. Para hacerlo, vamos a crear los _header files_ correspondientes:
 
@@ -571,9 +571,9 @@ int main(void)
 }
  ```
  
- Ahora, compilamos `gcc -o main main.c functions.c vector.c` y ejectuamos `./main`.
+ Ahora, compilamos `gcc -o main main.c functions.c vector.c` y ejecutamos `./main`.
  
- Tenemos casi resuelto el tema de los _header files_. Solo queda una ultima cosa. Ahora, creemos los archivo **matrix.h** y **matrix.c** que van a tener definido un `struct matrix3x3_t`, el cual va a usar el `struct vector3_t` definido en **vector.h**. Tambien vamos a definir algunas funciones básicas:
+ Tenemos casi resuelto el tema de los _header files_. Solo queda una última cosa. Ahora, creamos los archivo **matrix.h** y **matrix.c** que van a tener definido un `struct matrix3x3_t`, el cual va a usar el `struct vector3_t` definido en **vector.h**. Tambien vamos a definir algunas funciones básicas:
  
  `matrix.h`
  ``` C
@@ -725,9 +725,9 @@ Si tratamos de compilar haciendo `gcc -o main main.c functions.c vector.c matrix
 
 ![Error1](img/Error1.png)
 
-Esto es debido a que en el archivo **main.c** hacemos `#include` de **vector.h** y **matrix.h**. **matrix.h** hace `#include` de **vector.h**. El resultado es que **vector.h** se esta incluyendo dos veces dentro de **main.c**, _declarando_ dos veces el `struct vector3_t` y todas las funciones. Esto lo podríamos resolver facilmente haciendo solamente `#include` de **matrix.h** ya que este tambien incluye **vector.h**. Pero a medida que la cantidad de archivos en nuestro proyecto crece, se hace cada vez mas dificil trackear que archivos incluyen a que archivos.
+Esto es debido a que en el archivo **main.c** hacemos `#include` de **vector.h** y **matrix.h**. **matrix.h** hace `#include` de **vector.h**. El resultado es que **vector.h** se está incluyendo dos veces dentro de **main.c**, _declarando_ dos veces el `struct vector3_t` y todas las funciones. Esto lo podríamos resolver facilmente haciendo solamente `#include` de **matrix.h** ya que este también incluye **vector.h**. Pero a medida que la cantidad de archivos en nuestro proyecto crece, se hace cada vez mas difícil trackear que archivos incluyen a que archivos.
 
-La solución a este problema son los **guards**. Esta "tecnica" se basa en el uso de una serie de directivas de preprocesador que nos permiten hacer inclusion de un _header file_ solamente si este no fue incluido anteriormente. Vamos a tomar como ejemplo el archivo **functions.h**:
+La solución a este problema son los **guards**. Esta "técnica" se basa en el uso de una serie de directivas de preprocesador que nos permiten hacer inclusión de un _header file_ solamente si este no fue incluido anteriormente. Vamos a tomar como ejemplo el archivo **functions.h**:
 
 `functions.h`
 ``` C
@@ -741,7 +741,7 @@ int div(int a, int b);
 
 #endif
 ```
-Las directiva `#ifndef` `#endif` son directivas de control que nos permiten incluir una region de código siempre y cuando se cumpla la condición. En este caso, `#ifndef` pregunta si el simbolo que le especificamos no fue definido (con la directiva `#define`). Si el simbolo no fue definido, generará el código que está entre el `#ifndef` y el `#endif`. En nuestro caso, preguntamos si el simbolo `FUNCTIONS_H` fue definido. En caso de no haber sido definido, se genera la region de código entre el `#ifndef` y el `#endif` y se definirá el simbolo haciendo `#define FUNCTIONS_H`. Si luego del primer `#include` a **functions.h** hiciermos nuevamos `#include "functions.h"`, la directiva de control `#ifndef FUNCTIONS_H` sera falso, ya que el simbolo `FUNCTIONS_H` ya fue definida anteriormente, por lo que no se generará el código nuevamente. Terminemos por aplicar estos guards en los otros archivos _.h_:
+Las directiva `#ifndef` `#endif` son directivas de control que nos permiten incluir una región de código siempre y cuando se cumpla la condición. En este caso, `#ifndef` pregunta si el símbolo que le especificamos no fue definido (con la directiva `#define`). Si el símbolo no fue definido, generará el código que está entre el `#ifndef` y el `#endif`. En nuestro caso, preguntamos si el símbolo `FUNCTIONS_H` fue definido. En caso de no haber sido definido, se genera la region de código entre el `#ifndef` y el `#endif` y se definirá el símbolo haciendo `#define FUNCTIONS_H`. Si luego del primer `#include` a **functions.h** hiciermos nuevamos `#include "functions.h"`, la directiva de control `#ifndef FUNCTIONS_H` será falso, ya que el símbolo `FUNCTIONS_H` ya fue definido anteriormente, por lo que no se generará el código nuevamente. Terminemos por aplicar estos guards en los otros archivos _.h_:
 
 
 ``` C
@@ -914,11 +914,11 @@ int main(void)
   return 0;
 }
 ```
-Si queremos logear a la consola, simplemente seteamos el simbolo `LOG_TO_STDOUT` a 1. De lo contrario, vamos a logear a un archivo `logs.txt`. Compilamos haciendo `gcc -o main log.c main.c` y ejecutamos haciendo `./main`.
+Si queremos logear a la consola, simplemente seteamos el símbolo `LOG_TO_STDOUT` a 1. De lo contrario, vamos a logear a un archivo `logs.txt`. Compilamos haciendo `gcc -o main log.c main.c` y ejecutamos haciendo `./main`.
 
-## ¿Como funciona?
+## ¿Cómo funciona?
 
-El programa no tiene nada que no hayamos visto antes. Usamos las directivas `#define` e `#if` `#else` `#endif` que, si bien no las mensionamos, no es muy dificil intuir que es lo que hace. En `log.h` tenemos las _declaraciones_ de las funciones de **log.c**. En **log.c** tenemos nuestro logger. Definimos el `struct logger_t` y creamos una variable global dentro del archivo:
+El programa no tiene nada que no hayamos visto antes. Usamos las directivas `#define` e `#if` `#else` `#endif` que, si bien no las mencionamos, no es muy difícil intuir qué es lo que hace. En `log.h` tenemos las _declaraciones_ de las funciones de **log.c**. En **log.c** tenemos nuestro logger. Definimos el `struct logger_t` y creamos una variable global dentro del archivo:
 
 ``` C
 
@@ -936,7 +936,7 @@ struct logger_t log_instance = { 0 };
 .
 ```
 
-Cuando una variable es _definida_ por fuera de cualquier función, se dice que posée un _scope global_ o ámbito global. Estas variables tienen una duración o tiempo de vida igual al de todo el programa. En nuestro caso, `log_instance` posée _scope global_. Las funciones en **log.h** operan sobre esta única instancia. Esta es una posible solución al patron singleton en C. Pero hay un detalle. ¿Se acuerdan que nosotros podíamos _declarar_ funciones dentro de nuestros archivos _.c_? Esto tambien aplica para las variables. Esto se logra haciendo lo siguiente:
+Cuando una variable es _definida_ por fuera de cualquier función, se dice que posee un _scope global_ o ámbito global. Estas variables tienen una duración o tiempo de vida igual al de todo el programa. En nuestro caso, `log_instance` posee _scope global_. Las funciones en **log.h** operan sobre esta única instancia. Esta es una posible solución al patrón singleton en C. Pero hay un detalle. ¿Se acuerdan que nosotros podíamos _declarar_ funciones dentro de nuestros archivos _.c_? Esto también aplica para las variables. Esto se logra haciendo lo siguiente:
 
 `main.c`
 ``` C
@@ -975,7 +975,7 @@ int main(void)
 }
 ```
 
-La palabra reservada `extern` se utiliza para indicar que la variable que estamos _declarando_ se encuentra en algun otro archivo de C. Con esto, nosotros podríamos manipular esa instancia, la cual solo deberiamos ser capaz de manipular con las funciones que tenemos en **log.h**. Para evitar que se puede acceder a esta instancia por fuera del scope de su archivo, debemos _definirla_ como `static`:
+La palabra reservada `extern` se utiliza para indicar que la variable que estamos _declarando_ se encuentra en algún otro archivo de C. Con esto, nosotros podríamos manipular esa instancia, la cual solo deberiamos ser capaz de manipular con las funciones que tenemos en **log.h**. Para evitar que se puede acceder a esta instancia por fuera del scope de su archivo, debemos _definirla_ como `static`:
 
 ``` C
 
@@ -993,11 +993,11 @@ static struct logger_t log_instance = { 0 };
 .
 ```
 
-Cuando _definimos_ una variable global como `static`, estamos limitando el scope de la variable al ámbito del archivo de C en el que se encuentra. Es decir, la variable solo va a poder ser accedida desde dentro del archivo _.c_ que la contiene. En nuestro caso, ahora la variable `log_instance` solo va poder ser usada dentro del archivo **log.c**. Si volvieramos a compilar el programa con `gcc -o main log.c main.c` veriamos un error como el siguiente:
+Cuando _definimos_ una variable global como `static`, estamos limitando el scope de la variable al ámbito del archivo de C en el que se encuentra. Es decir, la variable solo va a poder ser accedida desde dentro del archivo _.c_ que la contiene. En nuestro caso, ahora la variable `log_instance` solo va poder ser usada dentro del archivo **log.c**. Si volvieramos a compilar el programa con `gcc -o main log.c main.c` veríamos un error como el siguiente:
 
 ![Error2](img/Error2.png)
 
-Esto es porque el linker no puede encontrar una referencia a `log_instances` desde fuera de del archivo **log.c**. Es como si ahora, la instancia `log_instances` fuera `privada`, y solo pudiera ser accedida desde dentro del archivo **log.c**.
+Esto es porque el linker no puede encontrar una referencia a `log_instances` desde fuera del archivo **log.c**. Es como si ahora, la instancia `log_instances` fuera `privada`, y solo pudiera ser accedida desde dentro del archivo **log.c**.
 
 Lo mismo deberiamos hacer con la función `log_set_level` que se encuentra definida en **log.c** ya que solo debería ser usada internamente en el archivo:
 
@@ -1026,7 +1026,7 @@ void  log_init(FILE* file, enum log_level log_level)
 ```
 ## Punteros.
 
-### Lo basico
+### Lo básico
 
 En C los punteros son números. Nada mas que números. Un puntero es, en verdad, un tipo de dato numérico, como un `int` o un `long`. La diferencia con estos últimos es que los punteros almacenan números que representan direcciones de memoria. Pero para probar que son solamente números, veamos el siguiente ejemplo:
 
@@ -1055,14 +1055,14 @@ int main(void)
 
 `int64_t` es un tipo de dato número, definido en `inttype.h`, que ocupa 8 bytes (64 bits). Es tamaño suficiente para alojar un puntero de cualquier arquitectura. _ptr_ es una variable de tipo `int64_t` al cual le asignamos el espacio de memoria donde se encuentra la variable _e_. Compilamos haciendo `gcc -o main main.c`. El compilador va a tirar un par de warnings advirtiéndonos de que estamos asignándole a un `int` el valor de un puntero. Pero el programa compila, y si ejecutamos haciendo `./main` vamos a ver que ambos `printf` muestran la misma dirección de memoria.
 
-Ahora, sabiendo que un puntero solo es un número. ¿Por que no usamos a los punteros directamente como un número, en vez de tratarlos de forma especial? El problema es que un número es eso, solo un número. Y nosotros generalmente queremos interpretar esas direcciones de memoria como objetos un poco mas complejos. Por ejemplo, si nosotros quisiéramos acceder a los valores que se encuentran almacenados en al dirección de memoria que tiene la variable _ptr_, no podríamos, ya que no tenemos manera de intepretar un `int64_t` como un `struct entity_t`. Es por eso que en C estan definidos para cada tipo de variable, su correspondiente puntero. Un puntero de un tipo determinado se lo suele identificar como `type*` donde _type_ es el tipo de dato al que se apunta. De esta manera, con el operador *, podemos acceder al contendio que posee un puntero de determinado tipo:
+Ahora, sabiendo que un puntero solo es un número. ¿Por qué no usamos a los punteros directamente como un número, en vez de tratarlos de forma especial? El problema es que un número es eso, solo un número. Y nosotros generalmente queremos interpretar esas direcciones de memoria como objetos un poco mas complejos. Por ejemplo, si nosotros quisiéramos acceder a los valores que se encuentran almacenados en al dirección de memoria que tiene la variable _ptr_, no podríamos, ya que no tenemos manera de intepretar un `int64_t` como un `struct entity_t`. Es por eso que en C están definidos para cada tipo de variable, su correspondiente puntero. Un puntero de un tipo determinado se lo suele identificar como `type*` donde _type_ es el tipo de dato al que se apunta. De esta manera, con el operador *, podemos acceder al contenido que posee un puntero de determinado tipo:
 
 ``` C
   struct entity_t* e_ptr = &e;
   printf("Entity x_pos: %d || Entity y_pos: %d\n", (*e_ptr).x, (*e_ptr).y);
 ```
 
-Ademas de permitir acceder al valor de la memoria a la que apuntan, el tipo de un puntero se utiliza a la hora de hacer _aritmética de punteros_. Veamos otro ejemplo:
+Además de permitir acceder al valor de la memoria a la que apuntan, el tipo de un puntero se utiliza a la hora de hacer _aritmética de punteros_. Veamos otro ejemplo:
 
 ``` C
 #include <stdio.h>
@@ -1121,7 +1121,7 @@ Todos conocemos los arrays, un conjunto de datos almacenados en memoria contigua
 -------------------
 ```
 
-Como dijimos, _values_ es un puntero que posee la primera dirección de memoria del array. Si tomamos como ejemplo el esquema anterior, el contenido de la variable _values_ va a ser **0XA10**(primera dirección del array). En el código de ejemplo, en cada `printf` estamos imprimiendo la dirección de _values_ mas un numero. Ya que, como dijimos antes, el contenido de _values_ es solo un numero, podemos hacer opearciones numericas con los punteros:
+Como dijimos, _values_ es un puntero que posee la primera dirección de memoria del array. Si tomamos como ejemplo el esquema anterior, el contenido de la variable _values_ va a ser **0XA10**(primera dirección del array). En el código de ejemplo, en cada `printf` estamos imprimiendo la dirección de _values_ mas un numero. Ya que, como dijimos antes, el contenido de _values_ es solo un numero, podemos hacer operaciones numéricas con los punteros:
 
 ``` C
   printf("%p\n", values + 0);
@@ -1129,7 +1129,7 @@ Como dijimos, _values_ es un puntero que posee la primera dirección de memoria 
   printf("%p\n", values + 2);
 ```
 
-Uno esperaría que los valores a imprimir fueran **0XA10**, **0XA11** y **0XA12**, ya que estamos sumando valores consecutivos a _values_. Pero los valores que obtendríamos seran **0XA10**, **0XA14** y **0XA18**. ¿Por que pasa esto? Esto es porque _values_ es un puntero de tipo `int`. Un tipo de dato `int` ~~por lo general~~ ocupan 4 bytes en memoria. Por lo que, al incrementar en 1 a _values_, en verdad nos estamos desplazando `values + 1 * sizeof(int)` posiciones de memoria (donde `sizeof(int)` es reemplazado por la cantidad de bytes que ocupa un `int`).
+Uno esperaría que los valores a imprimir fueran **0XA10**, **0XA11** y **0XA12**, ya que estamos sumando valores consecutivos a _values_. Pero los valores que obtendremos serán **0XA10**, **0XA14** y **0XA18**. ¿Por que pasa esto? Esto es porque _values_ es un puntero de tipo `int`. Un tipo de dato `int` ~~por lo general~~ ocupan 4 bytes en memoria. Por lo que, al incrementar en 1 a _values_, en verdad nos estamos desplazando `values + 1 * sizeof(int)` posiciones de memoria (donde `sizeof(int)` es reemplazado por la cantidad de bytes que ocupa un `int`).
 
 Para finalizar con la idea de la aritmética de punteros, vamos a crear una variable de tipo `char*` que apunte a la misma direccion de memoria que _values_ y vamos a imprimir 3 posiciones consecutivas como hicimos con _values_, pero utilizando la variable _ptr_:
 
@@ -1149,13 +1149,13 @@ int main(void)
 }
 ```
 
-El resultado que obtendríamos por pantalla sería **0XA10**, **0XA11** y **0XA12**. Esto es porque un tipo de dato `char` ocupa solo un byte en memoria, por lo que la aritmetica de punteros se reduce a `ptr + 1 * sizeof(char)`, donde `sizeof(char)` se reemplaza por la cantidad de bytes que ocupa un `char`. Es decir, 1 byte. Por lo que, en general, la aritmetica de punteros se reduce a:
+El resultado que obtendríamos por pantalla sería **0XA10**, **0XA11** y **0XA12**. Esto es porque un tipo de dato `char` ocupa solo un byte en memoria, por lo que la aritmética de punteros se reduce a `ptr + 1 * sizeof(char)`, donde `sizeof(char)` se reemplaza por la cantidad de bytes que ocupa un `char`. Es decir, 1 byte. Por lo que, en general, la aritmética de punteros se reduce a:
 
   _`ptr ± n * sizeof(type)`_
   
   Donde `type` es el tipo del puntero, y `sizeof(type)`  se reemplaza por el tamaño en bytes que ocupa `type`
 
-_Pequeño ejercício: Antes de compilar el siguiente programa, traten de deducir que es lo que imprimirian por pantalla cada ciclo for:_
+_Pequeño ejercicio: Antes de compilar el siguiente programa, traten de deducir que es lo que imprimirá por pantalla cada ciclo for:_
 
 ``` C
 #include <stdio.h>
@@ -1335,7 +1335,7 @@ void entity_print(const struct entity_t* e)
 }
 ```
 
-Como no queremos modificar el contenido del parámetro dentro de la función, marcamos al puntero como `const`. Si nosotros hubiéramos pasado el parametro como un `struct entity` se tendrian que haber pasado a la funcion 12 bytes (suponiendo que un `int` en nuestro ejemplo son 4 bytes) . Si bien la estructura no es muy compleja ni tampoco tan pesada, a medida que las estructuras aumentan de tamaño, se hace mucho mas evidente la preferencia de pasar punteros en vez de hacer una copia de estas estructuras.
+Como no queremos modificar el contenido del parámetro dentro de la función, marcamos al puntero como `const`. Si nosotros hubiéramos pasado el parametro como un `struct entity` se tendrian que haber pasado a la funcion 12 bytes (suponiendo que un `int` en nuestro ejemplo son 4 bytes) . Si bien la estructura no es muy compleja ni tampoco tan pesada, a medida que las estructuras aumentan de tamaño, se hace mucho más evidente la preferencia de pasar punteros en vez de hacer una copia de estas estructuras.
 
 ### Punteros void*.
 
@@ -1372,7 +1372,7 @@ Cada nodo posee un puntero `void*` porque no sabe que tipo de puntero van a alma
 
 ### Punteros a funciones.
 
-Todo lo que hay en un programa se encuentra en memoria. Incluso las funciones. Por lo que podemos hacer referencia a la dirección de memoria donde se encuentran estas funciónes a travez de punteros. Veamos un ejemplo usando nuevamente los archivos **entity.h** y **entity.c**:
+Todo lo que hay en un programa se encuentra en memoria, incluso las funciones. Por lo que podemos hacer referencia a la dirección de memoria donde se encuentran estas funciónes a través de punteros. Veamos un ejemplo usando nuevamente los archivos **entity.h** y **entity.c**:
 
 `entity.h`
 ``` C
@@ -1486,7 +1486,7 @@ void entity_move(struct entity_t* e, enum mov_direction direction)
 
 `<return_value> (*<pointer_name>)(<parameters>)`
 
-Lo primero que se especifica es el valor que debe retornar la función. Luego, se especifica el nombre del puntero. Y por ultimo, los parámetros que recibe la función. En nuestro caso, el puntero `void(*callback)(struct entity_t*)` no retorna nada (`void`), el puntero en si se va a identificar como `callback` y recibe como parámetro un `struct entity_t*`. Vamos a completar el ejemplo escribiendo un programa que utilice esta estructura entity:
+Lo primero que se especifica es el valor que debe retornar la función. Luego se especifica el nombre del puntero. Y por ultimo, los parámetros que recibe la función. En nuestro caso, el puntero `void(*callback)(struct entity_t*)` no retorna nada (`void`), el puntero en si se va a identificar como `callback` y recibe como parámetro un `struct entity_t*`. Vamos a completar el ejemplo escribiendo un programa que utilice esta estructura entity:
 
 ``` C
 #include "entity.h"
@@ -1527,7 +1527,7 @@ Compilamos haciendo `gcc -o main entity.c main.c` y ejecutamos haciendo `./main`
 
 ## Typedefs
 
-A veces queremos nombrar a ciertos tipos de datos con algun otro simbolo que resulte mas signifigativo para nosotros. O queremos reducir el tamaño de la declaración de cierto tipo. Por ejemplo, en la sección de punteros vimos que podemos crear punteros a funciones:
+A veces queremos nombrar a ciertos tipos de datos con algún otro símbolo que resulte más significativo para nosotros. O queremos reducir el tamaño de la declaración de cierto tipo. Por ejemplo, en la sección de punteros vimos que podemos crear punteros a funciones:
 
 ``` C
 struct entity_t
@@ -1540,7 +1540,7 @@ struct entity_t
 };
 ```
 
-La sintaxis para la _definición_ del campo callback no es de lo mas amigable. Pero podemos hacerla mas amigable:
+La sintaxis para la _definición_ del campo callback no es de lo mas amigable. Pero podemos mejorarla:
 
 ``` C
 typedef void(*entity_on_move_func)(struct entity_t*);
@@ -1554,7 +1554,7 @@ struct entity_t
 };
 ```
 
-Tambien podemos hacer lo mismo con los `struct`s o los `enum`s. Por ejemplo, siempre que tenemos que hacer referencia a algun tipo de estructura, tenemos que colocar delante la palabra clave `struct`. Y lo mismo para los `enum`s. Podemos evitar esto haciendo:
+Tambien podemos hacer lo mismo con los `struct`s o los `enum`s. Por ejemplo, siempre que tenemos que hacer referencia a algún tipo de estructura, tenemos que colocar delante la palabra clave `struct`. Y lo mismo para los `enum`s. Podemos evitar esto haciendo:
 
 ``` C
 typedef void(*entity_on_move_func)(entity_t*);
@@ -1581,7 +1581,7 @@ void entity_move(entity* e, mov_direction direction);
 void entity_print(const entity_t* e);
 ```
 
-O tambien, podemos utilizar los `typedef` a la hora de _declarar_ los `struct`s y los `enum`s:
+O también, podemos utilizar los `typedef` a la hora de _declarar_ los `struct`s y los `enum`s:
 
 ``` C
 .
@@ -1608,7 +1608,7 @@ typedef struct
 
 ## Declaraciones adelantadas
 
-Si bien C no es un lenguaje orientado a objetos, podemos simular alguna de sus caracteristicas. Una de ellas son las clases. Cuando nosotros definimos un `struct` y creamos funciones que operan sobre estas estructuras, estamos creando una clase. Veamos un ejemplo. Supongamos que queremos crear una _clase chrono_ que permita medir el tiempo que transcurre desde un momento a otro. Esto lo lograriamos creando el `struct` correspondiente y funciones que operen sobre este tipo de `struct`:
+Si bien C no es un lenguaje orientado a objetos, podemos simular alguna de sus caracteristicas. Una de ellas son las clases. Cuando nosotros definimos un `struct` y creamos funciones que operan sobre estas estructuras, estamos creando una clase. Veamos un ejemplo. Supongamos que queremos crear una _clase chrono_ que permita medir el tiempo que transcurre desde un momento a otro. Esto lo lograríamos creando el `struct` correspondiente y funciones que operen sobre este tipo de `struct`:
 
 `chrono.h`
 ``` C
@@ -1686,9 +1686,9 @@ int main(void)
 }
 ```
 
-Podemos compilar haciendo `gcc -o main chrono.c main.c` y ejecutar haciendo `./main`. Si bien, mecanismos como la herencia no son posibles, podemos encapsular la logica de un determinada entidad utilizando una combinación de `structs` y funciones. Pero tenemos un problema. Dado que el `struct chrono_t` esta _declarado_ en **chrono.h**, los campos del `struct` son visibles para cualquiera que lo utilices (podríamos decir que los campos del `struct` son `públicos`). Por lo que podríamos modificar los campos del `struct` a gusto. Si, por ejemplo, despues invocar a la función `chrono_stop` modificáramos por alguna razón el campo `result`, al llamar a `chrono_get_result_***` no obtendríamos un valor correcto.
+Podemos compilar haciendo `gcc -o main chrono.c main.c` y ejecutar haciendo `./main`. Si bien, mecanismos como la herencia no son posibles, podemos encapsular la logica de un determinada entidad utilizando una combinación de `structs` y funciones. Pero tenemos un problema. Dado que el `struct chrono_t` está _declarado_ en **chrono.h**, los campos del `struct` son visibles para cualquiera que lo utilices (podríamos decir que los campos del `struct` son `públicos`). Por lo que podríamos modificar los campos del `struct` a gusto. Si, por ejemplo, despues invocar a la función `chrono_stop` modificáramos por alguna razón el campo `result`, al llamar a `chrono_get_result_***` no obtendríamos un valor correcto.
 
-Una solución a este problema es realizar lo que se conoce como una _declaración adelantada_ del `struct chrono_t`. Las _declaraciones adelantadas_ permiten declarar un tipo del cual todavia no se conoce toda la informacion (como por ejemplo que atributos tiene). Por lo que podemos _declarar_ que existe un `struct chrono_t` pero sin conocer ni el cuerpo del `struct` ni la cantidad de bytes que ocupa en memoria (ya que no se conocen los campos del mismo). Luego, la declaración completa del `struct chrono_t` se moveria dentro del archivo **chrono.c**, que es el archivo que realmente debe conocer la forma del `struct`:
+Una solución a este problema es realizar lo que se conoce como una _declaración adelantada_ del `struct chrono_t`. Las _declaraciones adelantadas_ permiten declarar un tipo del cual todavia no se conoce toda la información (como por ejemplo que atributos tiene). Por lo que podemos _declarar_ que existe un `struct chrono_t` pero sin conocer ni el cuerpo del `struct` ni la cantidad de bytes que ocupa en memoria (ya que no se conocen los campos del mismo). Luego, la declaración completa del `struct chrono_t` se moveria dentro del archivo **chrono.c**, que es el archivo que realmente debe conocer la forma del `struct`:
 
 `chrono.h`
 ``` C
@@ -1747,7 +1747,7 @@ Pero si ahora intentamos compilar, vamos a obtener un error como el siguiente:
 
 ![Error3](img/Error3.png)
 
-Este error ocurre porque en el `main` estamos tratando de crear un `struct chrono_t` en el stack (variable local). Para crear una variable local, el compilador necesita saber cuantos bytes ocupa en memoria dicha variable. Información que en el caso de `chrono_t` ocultamos dentro del archivo **chrono.c**. Para solventar esto, podemos hacer que la función `chrono_init` retorne un puntero a un `chrono_t`, y hacer referencia al objeto a travez de un puntero:
+Este error ocurre porque en el `main` estamos tratando de crear un `struct chrono_t` en el stack (variable local). Para crear una variable local, el compilador necesita saber cuantos bytes ocupa en memoria dicha variable. Información que en el caso de `chrono_t` ocultamos dentro del archivo **chrono.c**. Para solventar esto, podemos hacer que la función `chrono_init` retorne un puntero a un `chrono_t`, y hacer referencia al objeto a través de un puntero:
 
 `chrono.h`
 ``` C
